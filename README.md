@@ -1,12 +1,16 @@
+# Prophet Inference: An inference only fork of Prophet (python only)
+
+This is an inference only fork of Prophet for Python. 
+
+As the name suggests, this implementation supports only inferencing from a Prophet model.
+
+The primary purpose of this package is where one would like to deploy a Prophet model in a light weight environment more specifically, without needing to install heavy dependencies such as pystan and Cython which requires a C/C++ compiler.
+
+In most cases, training the Prophet model is done in a development environment such as Jupyter Notebooks or Python scripts and rarely in a deployment environment such as Watson Machine Learning.
+
+Refer to links below for more details.
+
 # Prophet: Automatic Forecasting Procedure
-
-[![Build Status](https://travis-ci.com/facebook/prophet.svg?branch=master)](https://travis-ci.com/facebook/prophet)
-[![Pypi_Version](https://img.shields.io/pypi/v/fbprophet.svg)](https://pypi.python.org/pypi/fbprophet)
-[![Conda_Version](https://anaconda.org/conda-forge/fbprophet/badges/version.svg)](https://anaconda.org/conda-forge/fbprophet/)
-
-Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data. Prophet is robust to missing data and shifts in the trend, and typically handles outliers well.
-
-Prophet is [open source software](https://code.facebook.com/projects/) released by Facebook's [Core Data Science team](https://research.fb.com/category/data-science/). It is available for download on [CRAN](https://cran.r-project.org/package=prophet) and [PyPI](https://pypi.python.org/pypi/fbprophet/).
 
 ## Important links
 
