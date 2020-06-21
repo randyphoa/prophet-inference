@@ -1,14 +1,19 @@
-# Prophet Inference: An inference only fork of Prophet (python only)
+# Prophet Inference: An inference only fork of Prophet (Python only)
 
 This is an inference only fork of Prophet for Python. 
 
 As the name suggests, this implementation supports only inferencing from a Prophet model.
 
-The primary purpose of this package is where one would like to deploy a Prophet model in a light weight environment more specifically, without needing to install heavy dependencies such as pystan and Cython which requires a C/C++ compiler.
+The primary purpose of this package is where one would like to deploy a Prophet model in a light weight environment more specifically, without the need to install heavy dependencies such as pystan(Stan) and Cython which requires a C/C++ compiler. This is a pure Python implementation and does not require additional binaries.
 
-In most cases, training the Prophet model is done in a development environment such as Jupyter Notebooks or Python scripts and rarely in a deployment environment such as Watson Machine Learning.
+In most cases, training the Prophet model is done on a development environment such as Jupyter Notebooks or Python scripts and rarely in a deployment environment. This package can be installed in the deployment environment easily and perform inference/predictions from the earlier developed models.
 
-Refer to links below for more details.
+In summary, the main changes are,
+- removed dependencies Cython, cmdstanpy and pystan from requirements.txt
+- commented out Stan related code
+
+Refer to the [original implementation] (https://facebook.github.io/prophet/) for more details.
+
 
 # Prophet: Automatic Forecasting Procedure
 
