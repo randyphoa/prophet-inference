@@ -12,8 +12,13 @@ In summary, the main changes are,
 - removed dependencies Cython, cmdstanpy and pystan from requirements.txt
 - commented out Stan related code
 
-Refer to the [original implementation] (https://facebook.github.io/prophet/) for more details.
+Refer to the [original implementation](https://facebook.github.io/prophet) for more details.
 
+## Example
+
+An end-to-end example from training to inference in IBM Watson Machine Learning can be found in this [notebook](https://github.com/randyphoa/prophet-inference/blob/master/python/notebooks/Prophet-WML.ipynb).
+
+More details can be found at https://medium.com/@randyphoa/making-predictions-with-prophet-on-ibm-watson-machine-learning-abc42ca129f3
 
 ## Installation in Python
 
