@@ -12,8 +12,8 @@ import json
 import numpy as np
 import pandas as pd
 
-from fbprophet.forecaster import Prophet
-from fbprophet import __version__
+from fbprophet_inference.forecaster import ProphetInference
+from fbprophet_inference import __version__
 
 
 SIMPLE_ATTRIBUTES = [
@@ -24,13 +24,13 @@ SIMPLE_ATTRIBUTES = [
     'y_scale', 'logistic_floor', 'country_holidays', 'component_modes', 'fit_kwargs'
 ]
 
-PD_SERIES = ['changepoints', 'history_dates', 'train_holiday_names']
+PD_SERIES = ['changepoints', 'train_holiday_names'] # 'history_dates', 
 
 PD_TIMESTAMP = ['start']
 
 PD_TIMEDELTA = ['t_scale']
 
-PD_DATAFRAME = ['holidays', 'history', 'train_component_cols']
+PD_DATAFRAME = ['holidays', 'train_component_cols'] # 'history', 
 
 NP_ARRAY = ['changepoints_t']
 
@@ -76,7 +76,7 @@ def model_to_json(model):
         if getattr(model, attribute) is None:
             model_json[attribute] = None
         else:
-            model_json[attribute] = getattr(model, attribute).to_json(orient='table', index=False)
+            model_json[attribute] = getattr(model, attribute).to_json()
     for attribute in NP_ARRAY:
         model_json[attribute] = getattr(model, attribute).tolist()
     for attribute in ORDEREDDICT:
@@ -105,7 +105,7 @@ def model_from_json(model_json):
     Prophet model.
     """
     attr_dict = json.loads(model_json)
-    model = Prophet()  # We will overwrite all attributes set in init anyway
+    model = ProphetInference()  # We will overwrite all attributes set in init anyway
     # Simple types
     for attribute in SIMPLE_ATTRIBUTES:
         setattr(model, attribute, attr_dict[attribute])
@@ -127,7 +127,7 @@ def model_from_json(model_json):
         if attr_dict[attribute] is None:
             setattr(model, attribute, None)
         else:
-            df = pd.read_json(attr_dict[attribute], typ='frame', orient='table', convert_dates=['ds'])
+            df = pd.read_json(attr_dict[attribute], typ='frame', convert_dates=['ds'])
             if attribute == 'train_component_cols':
                 # Special handling because of named index column
                 df.columns.name = 'component'

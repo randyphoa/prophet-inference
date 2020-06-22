@@ -14,9 +14,9 @@ from datetime import timedelta, datetime
 import numpy as np
 import pandas as pd
 
-from fbprophet.make_holidays import get_holiday_names, make_holidays_df
-from fbprophet.models import StanBackendEnum
-from fbprophet.plot import (plot, plot_components)
+from fbprophet_inference.make_holidays import get_holiday_names, make_holidays_df
+#from fbprophet.models import StanBackendEnum
+#from fbprophet.plot import (plot, plot_components)
 
 logger = logging.getLogger('fbprophet')
 logger.setLevel(logging.INFO)
@@ -138,7 +138,7 @@ class Prophet(object):
         self.train_holiday_names = None
         self.fit_kwargs = {}
         self.validate_inputs()
-        self._load_stan_backend(stan_backend)
+        #self._load_stan_backend(stan_backend)
 
     def _load_stan_backend(self, stan_backend):
         if stan_backend is None:
@@ -866,6 +866,7 @@ class Prophet(object):
         # Compare to the training, if set.
         if self.train_component_cols is not None:
             component_cols = component_cols[self.train_component_cols.columns]
+            self.train_component_cols = self.train_component_cols.sort_values("col")
             if not component_cols.equals(self.train_component_cols):
                 raise Exception('A bug occurred in constructing regressors.')
         return component_cols, modes
@@ -1095,6 +1096,9 @@ class Prophet(object):
         -------
         The fitted Prophet object.
         """
+        raise ValueError(
+                'This is an inference only implementation. Use the full implementation to fit a model.'
+            )
         if self.history is not None:
             raise Exception('Prophet object can only be fit once. '
                             'Instantiate a new object.')
@@ -1188,8 +1192,8 @@ class Prophet(object):
         -------
         A pd.DataFrame with the forecast components.
         """
-        if self.history is None:
-            raise Exception('Model has not been fit.')
+        #if self.history is None:
+        #    raise Exception('Model has not been fit.')
 
         if df is None:
             df = self.history.copy()
@@ -1619,3 +1623,5 @@ class Prophet(object):
             weekly_start=weekly_start, yearly_start=yearly_start,
             figsize=figsize
         )
+
+class ProphetInference(Prophet): pass

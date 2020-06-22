@@ -11,7 +11,7 @@ import warnings
 import numpy as np
 import pandas as pd
 
-import fbprophet.hdays as hdays_part2
+import fbprophet_inference.hdays as hdays_part2
 import holidays as hdays_part1
 
 

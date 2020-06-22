@@ -5,6 +5,6 @@
 # LICENSE file in the root directory of this source tree. An additional grant 
 # of patent rights can be found in the PATENTS file in the same directory.
 
-from fbprophet.forecaster import Prophet
+from fbprophet_inference.forecaster import ProphetInference
 
 __version__ = '0.6.1.dev0'

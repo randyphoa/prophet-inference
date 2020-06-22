@@ -14,11 +14,11 @@ with open('requirements.txt', 'r') as f:
     install_requires = f.read().splitlines()
 
 setup(
-    name='fbprophet-inference',
-    version='0.6.1',
+    name='fbprophet_inference',
+    version='0.7',
     description='An inference only fork of Prophet (Python only)',
-    url='https://facebook.github.io/prophet/',
-    author='Randy Phoa <randyphoa@outlook.com>',
+    url='https://github.com/randyphoa/prophet-inference',
+    author='Randy Phoa',
     author_email='randyphoa@outlook.com',
     license='MIT',
     packages=find_packages(),
@@ -33,5 +33,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.7',
     ],
-    long_description="An inference only fork of Prophet (Python only)"
+    long_description="This is an inference only fork of Prophet for Python. The primary purpose of this package is to deploy a Prophet model in a light weight environment for the purpose of inference/prediction. This implementation does not require heavy dependencies such as pystan(Stan) and Cython which requires a C/C++ compiler. It is a purely Python based and does not require additional binaries."
 )
